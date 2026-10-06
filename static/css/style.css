@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Cine Catálogo — Estilos globales del proyecto
+   Evaluación Sumativa 2 · Django
+   ========================================================================== */
+
+:root {
+  --color-primario: #14181f;
+  --color-acento: #f59e0b;
+  --color-fondo: #f7f8fa;
+  --radio-banner: 1rem;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: #1f2933;
+}
+
+/* ---------------------------------- Navbar -------------------------------- */
+#navbar-principal {
+  transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+#navbar-principal.is-scrolled {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+#navbar-principal .navbar-brand {
+  letter-spacing: 0.03em;
+}
+
+#navbar-principal .nav-link:hover {
+  color: var(--color-acento);
+}
+
+/* ----------------------------------- Hero --------------------------------- */
+.hero {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(56, 132, 255, 0.35), transparent 45%),
+    linear-gradient(135deg, #14181f 0%, #24344d 55%, #14181f 100%);
+}
+
+.text-uppercase-recorrido {
+  letter-spacing: 0.25em;
+  font-size: 0.78rem;
+  color: var(--color-acento);
+}
+
+/* ------------------------------ Género / banners -------------------------- */
+.genre-hero {
+  background:
+    linear-gradient(120deg, rgba(20, 24, 31, 0.94), rgba(36, 52, 77, 0.9)),
+    var(--color-primario);
+}
+
+.genre-banner {
+  aspect-ratio: 16 / 9;
+  background-color: #e9edf2;
+}
+
+.genre-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.genre-banner-placeholder {
+  color: #8a94a6;
+}
+
+/* --------------------------- Tarjetas de películas ------------------------ */
+.poster-wrap {
+  aspect-ratio: 2 / 3;
+  background-color: #e9edf2;
+  overflow: hidden;
+}
+
+.poster-wrap img,
+.poster-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(20, 24, 31, 0.18) !important;
+}
+
+.movie-card .card-title {
+  line-height: 1.25;
+}
+
+/* -------------------------- Badges de edad (+7...+18) --------------------- */
+.edad-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45em 0.6em;
+  min-width: 2.6rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Apto para todo público */
+.edad-todos {
+  background-color: #198754 !important;
+  color: #fff !important;
+}
+
+/* Desde 12 años */
+.edad-12 {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+}
+
+/* Desde 14 años */
+.edad-14 {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+/* Solo adultos */
+.edad-18 {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------- Footer -------------------------------- */
+footer a {
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+/* ------------------------------ Utilidades -------------------------------- */
+.link-light {
+  text-decoration: none;
+}
+
+.link-light:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------- Responsividad extra -------------------------- */
+@media (max-width: 575.98px) {
+  .display-4 {
+    font-size: 2.2rem;
+  }
+
+  .movie-card .card-body {
+    padding: 0.75rem;
+  }
+}
