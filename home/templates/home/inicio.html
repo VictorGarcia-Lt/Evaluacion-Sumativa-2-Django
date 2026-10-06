@@ -5,7 +5,6 @@
 
 {% block content %}
 
-{# ============================ HERO ============================ #}
 <section class="hero text-white text-center">
   <div class="container py-5">
     <p class="lead mb-1 text-uppercase text-uppercase-recorrido">Evaluación Sumativa 2 · Django</p>
@@ -14,7 +13,6 @@
       Explora nuestro catálogo organizado por géneros. Cada título incluye su
       clasificación de edad, sinopsis y póster oficial.
     </p>
-    {# Datos calculados dinámicamente desde home/views.py #}
     <div class="d-flex justify-content-center gap-3 flex-wrap">
       <span class="badge text-bg-warning fs-6 px-3 py-2">
         <i class="bi bi-collection-play me-1"></i>{{ total_generos }} géneros
@@ -26,18 +24,15 @@
   </div>
 </section>
 
-{# ============================ CATÁLOGO ============================ #}
 <section class="container py-5" id="catalogo">
   <div class="text-center mb-5">
     <h2 class="fw-bold">Catálogo por género</h2>
     <p class="text-muted">Selecciona un género para ver su ficha completa.</p>
   </div>
 
-  {# Bucle principal: recorre los géneros entregados por la vista #}
   {% for genero in generos %}
   <div class="mb-5">
 
-    {# Encabezado del género #}
     <div class="row align-items-center g-4 mb-4">
       <div class="col-md-4">
         <div class="genre-banner rounded-4 overflow-hidden shadow-sm">
@@ -62,7 +57,6 @@
       </div>
     </div>
 
-    {# Tarjetas de películas del género #}
     <div class="row g-4">
       {% for pelicula in genero.peliculas %}
       <div class="col-6 col-md-4 col-xl-3">
@@ -77,7 +71,6 @@
             </div>
             {% endif %}
 
-            {# Clasificación de edad según la edad de la película #}
             {% if pelicula.edad >= 18 %}
               <span class="badge edad-badge edad-18 position-absolute top-0 end-0 m-2">+18</span>
             {% elif pelicula.edad >= 14 %}
@@ -121,7 +114,6 @@
   {% endfor %}
 </section>
 
-{# ============================ LLAMADA A LA ACCIÓN ============================ #}
 <section class="bg-dark text-white py-5">
   <div class="container text-center">
     <h2 class="fw-bold mb-3">¿Listo para elegir?</h2>
