@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ genero.nombre }} — Cine Catálogo{% endblock %}
+
+{% block content %}
+
+{# ============================ CABECERA DEL GÉNERO ============================ #}
+<section class="genre-hero text-white">
+  <div class="container py-5">
+    {# Miga de pan (breadcrumb) #}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-3">
+        <li class="breadcrumb-item"><a href="{% url 'home:inicio' %}" class="link-light">Inicio</a></li>
+        <li class="breadcrumb-item active text-white" aria-current="page">{{ genero.nombre }}</li>
+      </ol>
+    </nav>
+
+    <div class="row align-items-center g-4">
+      <div class="col-md-3">
+        <div class="genre-banner rounded-4 overflow-hidden shadow">
+          {% if genero.imagen %}
+          <img src="{% static genero.imagen %}" alt="Imagen del género {{ genero.nombre }}"
+               class="w-100 h-100 object-fit-cover">
+          {% else %}
+          <div class="genre-banner-placeholder d-flex align-items-center justify-content-center h-100">
+            <i class="bi bi-collection-play fs-1"></i>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h1 class="display-6 fw-bold mb-2">{{ genero.nombre }}</h1>
+        <p class="lead mb-3">{{ genero.descripcion }}</p>
+        <span class="badge text-bg-warning fs-6">
+          <i class="bi bi-camera-reels me-1"></i>{{ total_peliculas }} película{{ total_peliculas|pluralize }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================ PELÍCULAS DEL GÉNERO ============================ #}
+<section class="container py-5" id="peliculas">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h2 class="h4 fw-bold mb-0">Películas de {{ genero.nombre }}</h2>
+    <a href="{% url 'home:inicio' %}#catalogo" class="btn btn-outline-dark btn-sm">
+      <i class="bi bi-arrow-left me-1"></i>Volver al catálogo
+    </a>
+  </div>
+
+  {% if peliculas %}
+  {# Bucle: recorre las películas entregadas por la vista #}
+  <div class="row g-4">
+    {% for pelicula in peliculas %}
+    <div class="col-6 col-md-4 col-xl-3">
+      <div class="card h-100 movie-card shadow-sm border-0">
+        <div class="poster-wrap position-relative">
+          {% if pelicula.imagen %}
+          <img src="{% static pelicula.imagen %}" class="card-img-top"
+               alt="Póster de la película {{ pelicula.nombre }}" loading="lazy">
+          {% else %}
+          <div class="poster-fallback d-flex align-items-center justify-content-center">
+            <i class="bi bi-film fs-1 text-secondary"></i>
+          </div>
+          {% endif %}
+
+          {# Badge de clasificación de edad (condicionales if / elif / else) #}
+          {% if pelicula.edad >= 18 %}
+            <span class="badge edad-badge edad-18 position-absolute top-0 end-0 m-2">+18</span>
+          {% elif pelicula.edad >= 14 %}
+            <span class="badge edad-badge edad-14 position-absolute top-0 end-0 m-2">+{{ pelicula.edad }}</span>
+          {% elif pelicula.edad >= 12 %}
+            <span class="badge edad-badge edad-12 position-absolute top-0 end-0 m-2">+{{ pelicula.edad }}</span>
+          {% else %}
+            <span class="badge edad-badge edad-todos position-absolute top-0 end-0 m-2">+{{ pelicula.edad }}</span>
+          {% endif %}
+        </div>
+
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+            <h3 class="card-title h6 mb-0">{{ pelicula.nombre }}</h3>
+            <span class="text-muted small text-nowrap">{{ pelicula.anio }}</span>
+          </div>
+          <p class="card-text small text-muted mb-2">{{ pelicula.descripcion }}</p>
+          <span class="badge text-bg-light text-dark border">
+            <i class="bi bi-person-badge me-1"></i>Clasificación +{{ pelicula.edad }}
+          </span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  {# Estado vacío: condicional if/else #}
+  <div class="alert alert-secondary text-center">
+    <i class="bi bi-inbox me-2"></i>No hay películas registradas en este género todavía.
+  </div>
+  {% endif %}
+</section>
+
+{# ============================ SUGERENCIA DE OTRO GÉNERO ============================ #}
+<section class="bg-body-tertiary border-top py-4">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <span class="text-muted small">¿Te interesan otros temas?</span>
+    <div class="d-flex gap-2 flex-wrap">
+      {% for item in generos %}
+        {% if item.slug != genero.slug %}
+        <a href="{% url 'home:genero' item.slug %}" class="btn btn-outline-dark btn-sm">
+          {{ item.nombre }}
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
