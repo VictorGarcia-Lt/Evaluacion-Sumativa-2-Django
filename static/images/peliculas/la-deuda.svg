@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="Póster de La Deuda">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#4b5563"/>
+    </linearGradient>
+    <linearGradient id="sombra" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="55%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.55)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="900" fill="url(#fondo)"/>
+    <circle cx="80" cy="130" r="150" fill="#d1d5db" opacity="0.18"/>
+    <circle cx="540" cy="790" r="190" fill="#ffffff" opacity="0.06"/>
+    <circle cx="520" cy="150" r="60" fill="none" stroke="#d1d5db" stroke-width="6" opacity="0.75"/>
+    <g stroke="#d1d5db" stroke-width="10" stroke-linecap="round" opacity="0.85"><line x1="300" y1="90" x2="300" y2="200"/><line x1="160" y1="210" x2="440" y2="210"/><line x1="170" y1="150" x2="170" y2="210"/><line x1="430" y1="150" x2="430" y2="210"/></g>
+    <circle cx="170" cy="135" r="24" fill="#d1d5db" opacity="0.8"/>
+    <circle cx="430" cy="135" r="24" fill="none" stroke="#d1d5db" stroke-width="6" opacity="0.8"/>
+  <rect width="600" height="900" fill="url(#sombra)"/>
+
+  <!-- Género -->
+  <rect x="180" y="48" width="240" height="46" rx="23" fill="rgba(255,255,255,0.15)" stroke="#d1d5db" stroke-width="2"/>
+  <text x="300" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="2" fill="#ffffff">DRAMA</text>
+
+  <!-- Título -->
+    <text x="300" y="520" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" fill="#ffffff" style="paint-order:stroke; stroke:rgba(0,0,0,.35); stroke-width:3px;">La Deuda</text>
+
+  <!-- Año -->
+  <text x="300" y="637" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="26" font-weight="600" fill="#d1d5db">2026</text>
+
+  <line x1="220" y1="671" x2="380" y2="671" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+
+  <!-- Marca -->
+  <text x="300" y="855" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="6" fill="rgba(255,255,255,0.85)">CINE CATÁLOGO</text>
+</svg>

@@ -1,138 +1,120 @@
-"""Vistas de la aplicación ``home``.
-
-Este módulo concentra el catálogo estático de películas del proyecto:
-
-* 2 géneros de películas, cada uno con su descripción.
-* Mínimo 2 películas por género, con ``nombre``, ``edad``, ``descripcion``
-  e ``imagen``.
-
-Los datos se entregan **dinámicamente** a las plantillas mediante el
-``context`` de cada vista (nada está escrito a mano dentro de los HTML).
-"""
-
 from django.http import Http404
 from django.shortcuts import render
 
+# Catálogo de películas organizado por género.
 GENEROS = [
     {
-        "slug": "ciencia-ficcion",
-        "nombre": "Ciencia Ficción",
+        "slug": "accion",
+        "vista": "home:genero_accion",
+        "nombre": "Acción",
         "descripcion": (
-            "Futuros posibles, viajes interestelares y tecnología que pone a "
-            "prueba todo lo que creíamos saber sobre nosotros mismos."
+            "Persecuciones, misiones de alto riesgo y protagonistas que "
+            "lo arriesgan todo para salvar el día."
         ),
-        "imagen": "images/generos/ciencia-ficcion.svg",
+        "imagen": "images/generos/accion.svg",
         "peliculas": [
             {
-                "nombre": "Órbita 9",
+                "nombre": "Rescate Extremo",
                 "edad": 12,
                 "anio": 2024,
                 "descripcion": (
-                    "La tripulación de una estación de reciclaje orbital "
-                    "despierta tras 40 años de hibernación para descubrir "
-                    "que la Tierra dejó de responder a sus señales."
+                    "Un equipo de rescate de montaña enfrenta una tormenta "
+                    "para salvar a un grupo de alpinistas atrapados en la cima."
                 ),
-                "imagen": "images/peliculas/orbita-9.svg",
+                "imagen": "images/peliculas/rescate-extremo.svg",
             },
             {
-                "nombre": "Eco de Marte",
+                "nombre": "Velocidad Máxima",
                 "edad": 14,
                 "anio": 2025,
                 "descripcion": (
-                    "Una geóloga detecta una señal rítmica bajo el hielo "
-                    "marciano y debe decidir si avisar a la Tierra o "
-                    "continuar sola con la excavación."
+                    "Un conductor de ambulancias debe cruzar la ciudad en "
+                    "tiempo récord mientras una banda de mercenarios lo persigue."
                 ),
-                "imagen": "images/peliculas/eco-de-marte.svg",
+                "imagen": "images/peliculas/velocidad-maxima.svg",
             },
             {
-                "nombre": "Neón Profundo",
+                "nombre": "Operación Cóndor",
                 "edad": 16,
                 "anio": 2023,
                 "descripcion": (
-                    "En una ciudad sumergida, un hacker reconstruye la "
-                    "memoria de un androide para probar su inocencia ante "
-                    "un crimen que él no recuerda cometer."
+                    "Una agente encubierta se infiltra en una red internacional "
+                    "de contrabando para desmantelarla desde adentro."
                 ),
-                "imagen": "images/peliculas/neon-profundo.svg",
+                "imagen": "images/peliculas/operacion-condor.svg",
             },
             {
-                "nombre": "El Último Circuit",
+                "nombre": "El Último Comando",
                 "edad": 18,
                 "anio": 2026,
                 "descripcion": (
-                    "Cuando la red que gobierna al mundo se apaga, un "
-                    "ingeniero retirado descubre que apagarla fue apenas "
-                    "el primer paso de un plan mucho más grande."
+                    "Un comando de élite retirado vuelve a la acción cuando "
+                    "su base es atacada en plena noche."
                 ),
-                "imagen": "images/peliculas/ultimo-circuit.svg",
+                "imagen": "images/peliculas/ultimo-comando.svg",
             },
         ],
     },
     {
-        "slug": "comedia",
-        "nombre": "Comedia",
+        "slug": "drama",
+        "vista": "home:genero_drama",
+        "nombre": "Drama",
         "descripcion": (
-            "Situaciones descontroladas, enredos cotidianos y personajes "
-            "que siempre terminan empeorando lo que intentan arreglar."
+            "Historias humanas intensas, decisiones difíciles y personajes "
+            "que buscan un segundo comienzo."
         ),
-        "imagen": "images/generos/comedia.svg",
+        "imagen": "images/generos/drama.svg",
         "peliculas": [
             {
-                "nombre": "Mi tío astronauta",
+                "nombre": "Cartas al Abuelo",
                 "edad": 7,
                 "anio": 2024,
                 "descripcion": (
-                    "Un niño convence a su excéntrico tío de simular un "
-                    "viaje espacial en el jardín trasero y el engaño se "
-                    "le escapa de las manos a todo el barrio."
+                    "Un niño encuentra las cartas que su abuelo nunca envió "
+                    "y recorre su pueblo para entregarlas una por una."
                 ),
-                "imagen": "images/peliculas/mi-tio-astronauta.svg",
+                "imagen": "images/peliculas/cartas-al-abuelo.svg",
             },
             {
-                "nombre": "Los reemplazos",
+                "nombre": "El Camino de Regreso",
                 "edad": 12,
                 "anio": 2025,
                 "descripcion": (
-                    "Cinco empleados descubren que su empresa los clonó "
-                    "para despedirlos sin pagar indemnización y ahora "
-                    "deben competir contra sus propios dobles."
+                    "Un músico que perdió la inspiración vuelve a su pueblo "
+                    "natal para redescubrir por qué empezó a tocar."
                 ),
-                "imagen": "images/peliculas/los-reemplazos.svg",
+                "imagen": "images/peliculas/camino-de-regreso.svg",
             },
             {
-                "nombre": "Cita a ciegas",
+                "nombre": "Entre Dos Mundos",
                 "edad": 14,
                 "anio": 2023,
                 "descripcion": (
-                    "Dos perfiles falsos, creados a espaldas de sus dueños, "
-                    "terminan citándose en la vida real sin saber que "
-                    "ambos mintieron en absolutamente todo."
+                    "Una estudiante de intercambio se adapta a un nuevo país "
+                    "mientras su familia enfrenta una crisis a la distancia."
                 ),
-                "imagen": "images/peliculas/cita-a-ciegas.svg",
+                "imagen": "images/peliculas/entre-dos-mundos.svg",
             },
             {
-                "nombre": "Jefe de honor",
+                "nombre": "La Deuda",
                 "edad": 18,
                 "anio": 2026,
                 "descripcion": (
-                    "El equipo de una agencia organiza la despedida de su "
-                    "jefe jubilado y descubre, demasiado tarde, que el "
-                    "homenaje estaba dedicado a otra persona."
+                    "Un abogado descubre que el caso que lo hizo famoso "
+                    "escondía una verdad que cambiará su vida para siempre."
                 ),
-                "imagen": "images/peliculas/jefe-de-honor.svg",
+                "imagen": "images/peliculas/la-deuda.svg",
             },
         ],
     },
 ]
 
-def obtener_generos() -> list:
-  
+
+def obtener_generos():
     return GENEROS
 
 
-def obtener_genero(slug: str) -> dict:
-    
+def obtener_genero(slug):
     for genero in GENEROS:
         if genero["slug"] == slug:
             return genero
@@ -140,25 +122,29 @@ def obtener_genero(slug: str) -> dict:
 
 
 def inicio(request):
-    
     generos = obtener_generos()
     context = {
         "titulo": "Inicio",
         "generos": generos,
         "total_generos": len(generos),
-        "total_peliculas": sum(len(g["peliculas"]) for g in generos),
+        "total_peliculas": sum(len(genero["peliculas"]) for genero in generos),
     }
     return render(request, "home/inicio.html", context)
 
 
-def genero(request, slug: str):
-    
-    genero_actual = obtener_genero(slug)
-    context = {
+def _contexto_genero(genero_actual):
+    return {
         "titulo": genero_actual["nombre"],
-        "generos": obtener_generos(),  
+        "generos": obtener_generos(),
         "genero": genero_actual,
         "peliculas": genero_actual["peliculas"],
         "total_peliculas": len(genero_actual["peliculas"]),
     }
-    return render(request, "home/genero.html", context)
+
+
+def genero_accion(request):
+    return render(request, "home/genero.html", _contexto_genero(obtener_genero("accion")))
+
+
+def genero_drama(request):
+    return render(request, "home/genero.html", _contexto_genero(obtener_genero("drama")))

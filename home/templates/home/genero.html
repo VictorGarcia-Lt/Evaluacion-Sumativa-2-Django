@@ -99,7 +99,7 @@
     <div class="d-flex gap-2 flex-wrap">
       {% for item in generos %}
         {% if item.slug != genero.slug %}
-        <a href="{% url 'home:genero' item.slug %}" class="btn btn-outline-dark btn-sm">
+        <a href="{% url item.vista %}" class="btn btn-outline-dark btn-sm">
           {{ item.nombre }}
         </a>
         {% endif %}

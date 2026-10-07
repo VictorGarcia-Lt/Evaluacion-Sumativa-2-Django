@@ -85,7 +85,7 @@ class CatalogoTests(SimpleTestCase):
                     self.assertIsInstance(pelicula["edad"], int)
 
     def test_helper_obtener_genero(self):
-        self.assertEqual(views.obtener_genero("comedia")["nombre"], "Comedia")
+        self.assertEqual(views.obtener_genero("accion")["nombre"], "Acción")
         with self.assertRaises(Http404):
             views.obtener_genero("no-existe")
 
@@ -101,8 +101,11 @@ class EnrutamientoTests(SimpleTestCase):
     def test_ruta_raiz_carga_el_inicio(self):
         self.assertEqual(reverse("home:inicio"), "/")
 
-    def test_url_de_genero(self):
-        self.assertEqual(reverse("home:genero", args=["comedia"]), "/genero/comedia/")
+    def test_url_de_accion(self):
+        self.assertEqual(reverse("home:genero_accion"), "/accion/")
+
+    def test_url_de_drama(self):
+        self.assertEqual(reverse("home:genero_drama"), "/drama/")
 
     def test_url_espaciada_resuelve(self):
         self.assertEqual(reverse("home:inicio"), "/")
@@ -122,15 +125,17 @@ class VistasTests(SimpleTestCase):
             sum(len(g["peliculas"]) for g in views.GENEROS),
         )
 
-    def test_vista_genero_entrega_peliculas_en_contexto(self):
-        for genero in views.GENEROS:
-            with self.subTest(genero=genero["slug"]):
-                respuesta = self.client.get(f"/genero/{genero['slug']}/")
+    def test_vistas_de_generos_entregan_peliculas_en_contexto(self):
+        rutas = {"accion": "/accion/", "drama": "/drama/"}
+        for slug, ruta in rutas.items():
+            with self.subTest(slug=slug):
+                respuesta = self.client.get(ruta)
                 self.assertEqual(respuesta.status_code, 200)
                 self.assertIn("home/genero.html", [t.name for t in respuesta.templates])
-                self.assertEqual(respuesta.context["genero"]["slug"], genero["slug"])
+                self.assertEqual(respuesta.context["genero"]["slug"], slug)
                 self.assertEqual(
-                    len(respuesta.context["peliculas"]), len(genero["peliculas"])
+                    len(respuesta.context["peliculas"]),
+                    len(views.obtener_genero(slug)["peliculas"]),
                 )
 
     def test_vista_genero_inexistente_responde_404(self):

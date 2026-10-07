@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="Póster de El Último Comando">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c1917"/>
+      <stop offset="100%" stop-color="#57534e"/>
+    </linearGradient>
+    <linearGradient id="sombra" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="55%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.55)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="900" fill="url(#fondo)"/>
+    <circle cx="80" cy="130" r="150" fill="#f97316" opacity="0.18"/>
+    <circle cx="540" cy="790" r="190" fill="#ffffff" opacity="0.06"/>
+    <circle cx="520" cy="150" r="60" fill="none" stroke="#f97316" stroke-width="6" opacity="0.75"/>
+    <path d="M90 130 l60 70 l-60 70" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    <path d="M190 130 l60 70 l-60 70" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.68"/>
+    <path d="M290 130 l60 70 l-60 70" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.56"/>
+    <path d="M390 130 l60 70 l-60 70" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.44000000000000006"/>
+    <path d="M490 130 l60 70 l-60 70" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.32000000000000006"/>
+  <rect width="600" height="900" fill="url(#sombra)"/>
+
+  <!-- Género -->
+  <rect x="180" y="48" width="240" height="46" rx="23" fill="rgba(255,255,255,0.15)" stroke="#f97316" stroke-width="2"/>
+  <text x="300" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="2" fill="#ffffff">ACCIÓN</text>
+
+  <!-- Título -->
+    <text x="300" y="484" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" fill="#ffffff" style="paint-order:stroke; stroke:rgba(0,0,0,.35); stroke-width:3px;">El Último</text>
+    <text x="300" y="556" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" fill="#ffffff" style="paint-order:stroke; stroke:rgba(0,0,0,.35); stroke-width:3px;">Comando</text>
+
+  <!-- Año -->
+  <text x="300" y="673" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="26" font-weight="600" fill="#f97316">2026</text>
+
+  <line x1="220" y1="707" x2="380" y2="707" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+
+  <!-- Marca -->
+  <text x="300" y="855" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="6" fill="rgba(255,255,255,0.85)">CINE CATÁLOGO</text>
+</svg>

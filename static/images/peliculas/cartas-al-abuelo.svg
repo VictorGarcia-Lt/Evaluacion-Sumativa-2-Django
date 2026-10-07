@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="Póster de Cartas al Abuelo">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="sombra" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="55%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.55)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="900" fill="url(#fondo)"/>
+    <circle cx="80" cy="130" r="150" fill="#fff7ed" opacity="0.18"/>
+    <circle cx="540" cy="790" r="190" fill="#ffffff" opacity="0.06"/>
+    <circle cx="520" cy="150" r="60" fill="none" stroke="#fff7ed" stroke-width="6" opacity="0.75"/>
+    <g transform="translate(400 80) rotate(8)"><rect x="-120" y="-75" width="240" height="150" rx="12" fill="#fff7ed" opacity="0.85"/><path d="M-120 -75 L0 20 L120 -75" fill="none" stroke="#000000" stroke-width="4" opacity="0.25"/></g>
+  <rect width="600" height="900" fill="url(#sombra)"/>
+
+  <!-- Género -->
+  <rect x="180" y="48" width="240" height="46" rx="23" fill="rgba(255,255,255,0.15)" stroke="#fff7ed" stroke-width="2"/>
+  <text x="300" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="2" fill="#ffffff">DRAMA</text>
+
+  <!-- Título -->
+    <text x="300" y="484" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" fill="#ffffff" style="paint-order:stroke; stroke:rgba(0,0,0,.35); stroke-width:3px;">Cartas al</text>
+    <text x="300" y="556" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" fill="#ffffff" style="paint-order:stroke; stroke:rgba(0,0,0,.35); stroke-width:3px;">Abuelo</text>
+
+  <!-- Año -->
+  <text x="300" y="673" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="26" font-weight="600" fill="#fff7ed">2024</text>
+
+  <line x1="220" y1="707" x2="380" y2="707" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+
+  <!-- Marca -->
+  <text x="300" y="855" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="6" fill="rgba(255,255,255,0.85)">CINE CATÁLOGO</text>
+</svg>
